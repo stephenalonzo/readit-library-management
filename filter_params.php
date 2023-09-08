@@ -2,6 +2,8 @@
 
 class filterParams {
 
+    public $params;
+
     public function filterParams()
     {
 

@@ -8,9 +8,16 @@ require_once ('db_credentials.php');
 require_once ('db_access.php');
 require_once ('filter_params.php');
 require_once ('clean_params.php');
+require_once ('get_students.php');
+require_once ('student_registration_data.php');
 
 $db = new dbCredentials();
 $pdo = new dbAccess();
+
+$db->setServerName('localhost');
+$db->setUsername('root');
+
+$conn = $pdo->dbConnect($db->getServerName(), $db->getUsername());
 
 $filter_params = new filterParams();
 $clean_params = new cleanParams();
@@ -18,16 +25,19 @@ $clean_params = new cleanParams();
 $params = $filter_params->filterParams($clean_params);
 $clean_params->setCleanParams($params);
 
-$db->setServerName('localhost');
-$db->setUsername('root');
+foreach ($_REQUEST as $key => $value)
+{
 
-$pdo->dbConnect($db->getServerName(), $db->getUsername());
+    switch ($key)
+    {
 
-echo $params['name'];
+        case 'register_student':
+            $student_registration = new studentRegistration();
+            $student_registration->registerStudent($conn, $params['first_name'], $params['last_name'], $params['email'], $params['confirm_password']);
+        break;
+
+    }
+
+}
 
 ?>
-
-<form action="" method="post">
-    <input type="text" name="name" id="">
-    <button type="submit">Send</button>
-</form>
