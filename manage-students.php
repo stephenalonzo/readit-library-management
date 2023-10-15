@@ -1,3 +1,9 @@
+<?php 
+
+require_once ('controller.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,16 +76,17 @@
                                     </thead>
     
                                     <tbody class="divide-y divide-gray-200">
-                                        <tr>
-                                            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">
-                                                John
-                                            </td>
-                                            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">
-                                                Doe
-                                            </td>
-                                            <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">24/05/1995</td>
-                                            <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">Web Developer</td>
-                                        </tr>
+                                        <?php 
+                                        
+                                        $students = new getStudents();
+                                        $appView = new appViews();
+
+                                        $results = $students->getStudentList($conn);
+                                        $row = $appView->viewStudents($results);
+
+                                        echo $row;
+                                        
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
