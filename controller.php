@@ -11,6 +11,9 @@ require_once ('clean_params.php');
 require_once ('get_students.php');
 require_once ('student_registration_data.php');
 require_once ('add_book_data.php');
+require_once ('issue_book_data.php');
+require_once ('get_books.php');
+require_once ('get_specific_book.php');
 
 require_once ('app-views.php');
 
@@ -28,6 +31,16 @@ $clean_params = new cleanParams();
 $params = $filter_params->filterParams($clean_params);
 $clean_params->setCleanParams($params);
 
+$get_specific_books = new getSpecificBook();
+$specific_books = $get_specific_books->getSpecificBook($conn, $params['book_id']);
+
+foreach ($specific_books as $specific_book)
+{
+
+    $book_title = $specific_book['book_title'];
+
+}
+
 foreach ($_REQUEST as $key => $value)
 {
 
@@ -42,6 +55,11 @@ foreach ($_REQUEST as $key => $value)
         case 'add_book':
             $add_book = new addBook();
             $add_book->addBook($conn, $params['book_title'], $params['author_name'], $params['book_description'], $params['book_category'], $params['current_issues']);
+        break;
+
+        case 'issue_book':
+            $issue_book = new issueBook();
+            $issue_book->issueBook($conn, $book_title, $params['student_id']);
         break;
 
     }

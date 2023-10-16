@@ -10,7 +10,7 @@ require_once ('controller.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Students | ReadIT Library Management System</title>
+    <title>Currently Issued Books | ReadIT Library Management System</title>
     <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet"
         type="text/css" />
     <link rel="stylesheet" href="./dist/output.css">
@@ -54,15 +54,12 @@ require_once ('controller.php');
                 </div>
                 <div class="px-4 w-full h-full col-span-6 space-y-6">
                     <div class="flex flex-col items-center bg-white w-full h-full">
-                        <div class="bg-gray-200 px-4 py-2 w-full text-black font-semibold">Manage Students</div>
+                        <div class="bg-gray-200 px-4 py-2 w-full text-black font-semibold">Currently Issued Books</div>
                         <div class="p-6 w-full">
                             <div class="overflow-x-auto rounded-lg border border-gray-200">
                                 <table class="w-full divide-y-2 divide-gray-200 bg-white text-sm">
                                     <thead class="ltr:text-left rtl:text-right">
                                         <tr>
-                                            <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                                Log ID
-                                            </th>
                                             <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                                                 Book Issue ID
                                             </th>
@@ -91,6 +88,15 @@ require_once ('controller.php');
                                             </td>
                                             <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">
 
+                                            </td>
+                                            <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
+                                                
+                                            </td>
+                                            <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
+                                                
+                                            </td>
+                                            <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
+                                                
                                             </td>
                                             <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
                                                 

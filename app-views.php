@@ -26,6 +26,22 @@ class appViews
 
     }
 
+    public function getBooks($results)
+    {
+
+        foreach ($results as $row)
+        {
+
+            $books_list = 
+            '<option value="'.$row['id'].'">'.$row['book_title'].'</option>';
+            
+            echo $books_list;
+
+        }
+
+
+    }
+
 }
 
 ?>
