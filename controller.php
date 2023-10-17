@@ -14,6 +14,7 @@ require_once ('add_book_data.php');
 require_once ('issue_book_data.php');
 require_once ('get_books.php');
 require_once ('get_specific_book.php');
+require_once ('return_book_data.php');
 
 require_once ('app-views.php');
 
@@ -37,6 +38,7 @@ $specific_books = $get_specific_books->getSpecificBook($conn, $params['book_id']
 foreach ($specific_books as $specific_book)
 {
 
+    $book_id = $specific_book['id'];
     $book_title = $specific_book['book_title'];
 
 }
@@ -59,7 +61,12 @@ foreach ($_REQUEST as $key => $value)
 
         case 'issue_book':
             $issue_book = new issueBook();
-            $issue_book->issueBook($conn, $book_title, $params['student_id']);
+            $issue_book->issueBook($conn, $book_id, $book_title, $params['student_id']);
+        break;
+
+        case 'return_book':
+            $return_book = new returnBook();
+            $return_book->returnBook($conn, $params['book_id']);
         break;
 
     }

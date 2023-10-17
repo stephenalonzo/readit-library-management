@@ -26,16 +26,42 @@ class appViews
 
     }
 
-    public function getBooks($results)
+    public function getNonIssuedBooks($results)
     {
 
         foreach ($results as $row)
         {
 
-            $books_list = 
-            '<option value="'.$row['id'].'">'.$row['book_title'].'</option>';
-            
-            echo $books_list;
+            if ($row['current_issue'] == NULL || empty($row['current_issue']))
+            {
+
+                $books_list = 
+                '<option value="'.$row['id'].'">'.$row['id'].'</option>';
+                
+                echo $books_list;
+
+            }
+
+        }
+
+
+    }
+
+    public function getIssuedBooks($results)
+    {
+
+        foreach ($results as $row)
+        {
+
+            if ($row['current_issue'] != NULL || !empty($row['current_issue']))
+            {
+
+                $books_list = 
+                '<option value="'.$row['id'].'">'.$row['id'].'</option>';
+                
+                echo $books_list;
+
+            }
 
         }
 

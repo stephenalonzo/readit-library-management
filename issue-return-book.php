@@ -62,7 +62,7 @@
                                     $appView = new appViews();
 
                                     $results = $books->getBookList($conn);
-                                    $row = $appView->getBooks($results);
+                                    $row = $appView->getNonIssuedBooks($results);
 
                                     echo $row;
                                     
@@ -78,11 +78,23 @@
                         <div class="bg-gray-200 px-4 py-2 w-full text-black font-semibold">Return a Book</div>
                         <form action="" method="post" class="p-4 w-2/3 flex flex-col space-y-8">
                             <div class="flex flex-row items-center">
-                                <label for="" class="w-1/5">Book ID</label>
-                                <input type="text" name="" id="" class="p-2 rounded-sm w-full border">
+                            <label for="" class="w-1/5">Book ID</label>
+                                <select name="book_id" id="" class="p-2 rounded-sm w-full border">
+                                    <?php 
+                                    
+                                    $books = new getBooks();
+                                    $appView = new appViews();
+
+                                    $results = $books->getBookList($conn);
+                                    $row = $appView->getIssuedBooks($results);
+
+                                    echo $row;
+                                    
+                                    ?>
+                                </select>
                             </div>
                             <div class="flex flex-row justify-items-end items-end">
-                                <button type="submit" class="w-32 px-4 py-2 rounded-sm bg-blue-600 text-white">Return Book</button>
+                                <button type="submit" name="return_book" class="w-32 px-4 py-2 rounded-sm bg-blue-600 text-white">Return Book</button>
                             </div>
                         </form>
                     </div>

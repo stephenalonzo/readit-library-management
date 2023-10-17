@@ -3,17 +3,24 @@
 class issueBook
 {
 
-    public function issueBook($pdo, $book_title, $student_id)
+    public function issueBook($pdo, $book_id, $book_title, $student_id)
     {
 
-        $sql = "INSERT INTO issued_books (book_title, student_id, issued_on, return_date) VALUES (:book_title, :student_id, NOW(), NOW()+3)";
+        $sql = "INSERT INTO issued_books (book_id, book_title, student_id, issued_on, return_date) VALUES (:book_id, :book_title, :student_id, NOW(), DATE_ADD(NOW(), INTERVAL 3 DAY))";
         $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':book_id', $book_id);
         $stmt->bindParam(':book_title', $book_title);
         $stmt->bindParam(':student_id', $student_id);
         $stmt->execute();
 
-        if ($book_title != NULL || $student_id != NULL)
+        if ($stmt)
         {
+
+            $sql = "UPDATE books SET current_issue = :current_issue WHERE id = :id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':current_issue', $student_id);
+            $stmt->bindParam(':id', $book_id);
+            $stmt->execute();
 
             return $stmt;
 
