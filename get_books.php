@@ -9,9 +9,9 @@ class getBooks {
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
 
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        return $result;
+        return $results;
 
     }
 

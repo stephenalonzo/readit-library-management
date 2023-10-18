@@ -4,7 +4,6 @@ error_reporting (E_ALL ^ E_NOTICE);
 error_reporting (E_ERROR | E_PARSE);
 date_default_timezone_set('America/Los_Angeles');
 
-require_once ('db_credentials.php');
 require_once ('db_access.php');
 require_once ('filter_params.php');
 require_once ('clean_params.php');
@@ -18,13 +17,8 @@ require_once ('return_book_data.php');
 
 require_once ('app-views.php');
 
-$db = new dbCredentials();
 $pdo = new dbAccess();
-
-$db->setServerName('localhost');
-$db->setUsername('root');
-
-$conn = $pdo->dbConnect($db->getServerName(), $db->getUsername());
+$conn = $pdo->dbConnect('localhost', 'root');
 
 $filter_params = new filterParams();
 $clean_params = new cleanParams();
@@ -55,9 +49,6 @@ foreach ($_REQUEST as $key => $value)
         break;
 
         case 'add_book':
-
-
-
             $add_book = new addBook();
             $add_book->addBook($conn, $params['book_title'], $params['author_name'], $params['book_description'], $params['book_category'], $params['current_issues']);
         break;

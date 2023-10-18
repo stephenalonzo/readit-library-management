@@ -3,10 +3,10 @@
 class appViews
 {
 
-    public function appTemplate($component)
+    public function appHeader()
     {
 
-        $template =
+        $header = 
         '<!DOCTYPE html>
         <html lang="en">
         <head>
@@ -47,20 +47,28 @@ class appViews
                                 </li>
                                 <hr>
                                 <li class="pl-4 text-white py-4 bg-stone-800">
-                                    <a href="./currently-ssued-books.php">View Currently Issued Books</a>
+                                    <a href="./currently-issued-books.php">View Currently Issued Books</a>
                                 </li>
                                 <hr>
                             </ul>
-                        </div>
-                        '.$component.'
+                        </div>';
+
+                        return $header;
+
+    }
+
+    public function appFooter()
+    {
+
+        $footer = 
+        '               </div>
                     </div>
-                </div>
-            </section>
-        </body>
+                </section>
+            </body>
         </html>';
 
-        return $template;
-
+        return $footer;
+        
     }
 
     public function viewStudents($results)
@@ -145,10 +153,10 @@ class appViews
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['book_category'].'</td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['current_issue'].'</td>
             </tr>';
+
+            echo $book_row;
             
         }
-        
-        return $book_row;
         
     }
 

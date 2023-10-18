@@ -1,36 +1,45 @@
-<?php 
+<?php
 
-require_once ('controller.php');
+require_once('controller.php');
 
-$component = 
-'<div class="px-4 w-full h-full col-span-6 space-y-6">
-<div class="flex flex-col items-start space-y-6">
-    <div class="p-6 rounded-sm bg-white text-black w-full text-center">
-        <span class="text-2xl font-semibold">ReadIT Library Management System</span>
-    </div>
-    <div class="grid grid-cols-9 gap-6 w-full text-center">
-        <a href="#" class="p-6 bg-white rounded-sm w-full col-span-3 flex flex-col items-center space-y-4">
-            <i class="fas fa-list text-4xl text-blue-600"></i>
-            <span class="text-xl font-semibold">Find Book</span>
-        </a>
-        <a href="#" class="p-6 bg-white rounded-sm w-full col-span-3 flex flex-col items-center space-y-4">
-            <i class="fas fa-book text-4xl text-blue-600"></i>
-            <span class="text-xl font-semibold">Find Book Issue</span>
-        </a>
-        <a href="#" class="p-6 bg-white rounded-sm w-full col-span-3 flex flex-col items-center space-y-4">
-            <i class="fas fa-user text-4xl text-blue-600"></i>
-            <span class="text-xl font-semibold">Find Student</span>
-        </a>
-    </div>
-</div>
-<!-- <div class="p-6 w-full h-full bg-white text-white space-y-6">
-    <form action="" method="post" class="flex flex-row items-center space-x-4">
-        <div class="flex flex-row items-center space-x-2 w-full text-black">
-            <label for="">Enter Student ID</label>
-            <input type="text" name="" id="" class="p-2 rounded-sm w-full border">
+$appViews = new appViews();
+
+$header = $appViews->appHeader();
+$footer = $appViews->appFooter();
+
+echo $header;
+
+?>
+
+<div class="px-4 w-full h-full col-span-6 space-y-6">
+    <div class="flex flex-col items-start space-y-6">
+        <div class="p-6 rounded-sm bg-white text-black w-full text-center">
+            <span class="text-2xl font-semibold">ReadIT Library Management System</span>
         </div>
-        <button type="submit" class="px-4 py-2 rounded-sm bg-blue-600 text-white">Search</button>
-    </form>
+        <div class="grid grid-cols-9 gap-6 w-full text-center">
+            <a href="#" class="p-6 bg-white rounded-sm w-full col-span-3 flex flex-col items-center space-y-4">
+                <i class="fas fa-list text-4xl text-blue-600"></i>
+                <span class="text-xl font-semibold">Find Book</span>
+            </a>
+            <a href="#" class="p-6 bg-white rounded-sm w-full col-span-3 flex flex-col items-center space-y-4">
+                <i class="fas fa-book text-4xl text-blue-600"></i>
+                <span class="text-xl font-semibold">Find Book Issue</span>
+            </a>
+            <a href="#" class="p-6 bg-white rounded-sm w-full col-span-3 flex flex-col items-center space-y-4">
+                <i class="fas fa-user text-4xl text-blue-600"></i>
+                <span class="text-xl font-semibold">Find Student</span>
+            </a>
+        </div>
+    </div>
+    <div class="p-6 w-full h-full bg-white text-white space-y-6">
+        <form action="" method="post" class="flex flex-row items-center space-x-4">
+            <div class="flex flex-row items-center space-x-2 w-full text-black">
+                <input type="text" name="" id="" placeholder="Enter Student ID" class="p-2 rounded-sm w-full border">
+                <button type="submit" class="px-4 py-2 rounded-sm bg-blue-600 text-white">Search</button>
+            </div>
+        </form>
+    </div>
+    <!-- <div class="p-6 w-full h-full bg-white text-white space-y-6">
     <div class="px-4 py-2 bg-blue-300 text-blue-600 text-sm text-center">Student Details</div>
     <div class="flex flex-row space-x-4">
         <ul class="text-end">
@@ -59,12 +68,11 @@ $component =
             <li class="text-black">Issued On</li>
         </ul>
     </div>
-</div> -->
-</div>';
+</div> --!>
+</div>
 
-$appViews = new appViews();
-$template = $appViews->appTemplate($component);
+<?php
 
-echo $template;
+echo $footer;
 
 ?>
