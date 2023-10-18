@@ -55,6 +55,9 @@ foreach ($_REQUEST as $key => $value)
         break;
 
         case 'add_book':
+
+
+
             $add_book = new addBook();
             $add_book->addBook($conn, $params['book_title'], $params['author_name'], $params['book_description'], $params['book_category'], $params['current_issues']);
         break;

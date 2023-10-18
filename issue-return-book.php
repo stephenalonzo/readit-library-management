@@ -62,7 +62,7 @@
                                     $appView = new appViews();
 
                                     $results = $books->getBookList($conn);
-                                    $row = $appView->getNonIssuedBooks($results);
+                                    $row = $appView->viewNonIssuedBooks($results);
 
                                     echo $row;
                                     
@@ -86,7 +86,7 @@
                                     $appView = new appViews();
 
                                     $results = $books->getBookList($conn);
-                                    $row = $appView->getIssuedBooks($results);
+                                    $row = $appView->viewIssuedBooks($results);
 
                                     echo $row;
                                     
