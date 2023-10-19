@@ -32,7 +32,7 @@ echo $header;
         </div>
     </div>
     <div class="p-6 w-full h-full bg-white text-white space-y-6">
-        <form action="" method="post" class="flex flex-row items-center space-x-4">
+        <form action="" method="post" class="flex flex-row items-center m-0">
             <div class="flex flex-row items-center space-x-2 w-full text-black">
                 <input type="text" name="" id="" placeholder="Enter Student ID" class="p-2 rounded-sm w-full border">
                 <button type="submit" class="px-4 py-2 rounded-sm bg-blue-600 text-white">Search</button>

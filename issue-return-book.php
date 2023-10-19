@@ -28,9 +28,8 @@ echo $header;
                     $appView = new appViews();
 
                     $results = $books->getBookList($conn);
-                    $row = $appView->viewNonIssuedBooks($results);
 
-                    echo $row;
+                    $appView->viewNonIssuedBooks($results);
 
                     ?>
                 </select>
@@ -52,9 +51,8 @@ echo $header;
                     $appView = new appViews();
 
                     $results = $books->getBookList($conn);
-                    $row = $appView->viewIssuedBooks($results);
-
-                    echo $row;
+                    
+                    $appView->viewIssuedBooks($results);
 
                     ?>
                 </select>

@@ -3,13 +3,12 @@
 class issueBook
 {
 
-    public function issueBook($pdo, $book_id, $book_title, $student_id)
+    public function issueBook($pdo, $book_id, $student_id)
     {
 
-        $sql = "INSERT INTO issued_books (book_id, book_title, student_id, issued_on, return_date) VALUES (:book_id, :book_title, :student_id, NOW(), DATE_ADD(NOW(), INTERVAL 3 DAY))";
+        $sql = "INSERT INTO issued_books (book_id, student_id, issued_on, return_date) VALUES (:book_id, :student_id, NOW(), DATE_ADD(NOW(), INTERVAL 3 DAY))";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':book_id', $book_id);
-        $stmt->bindParam(':book_title', $book_title);
         $stmt->bindParam(':student_id', $student_id);
         $stmt->execute();
 

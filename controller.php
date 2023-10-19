@@ -14,6 +14,8 @@ require_once ('issue_book_data.php');
 require_once ('get_books.php');
 require_once ('get_specific_book.php');
 require_once ('return_book_data.php');
+require_once ('get_categories.php');
+require_once ('get_issued_books.php');
 
 require_once ('app-views.php');
 
@@ -55,7 +57,7 @@ foreach ($_REQUEST as $key => $value)
 
         case 'issue_book':
             $issue_book = new issueBook();
-            $issue_book->issueBook($conn, $book_id, $book_title, $params['student_id']);
+            $issue_book->issueBook($conn, $book_id, $params['student_id']);
         break;
 
         case 'return_book':

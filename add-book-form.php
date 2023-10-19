@@ -31,7 +31,15 @@ echo $header;
         <div class="flex flex-row items-center">
             <label for="" class="w-1/5">Category</label>
             <select name="book_category" id="" class="p-2 rounded-sm w-full border">
-                <option value="1">Test</option>
+                <?php 
+
+                $categories = new getCategories();
+                
+                $results = $categories->getCategories($conn);
+
+                $appViews->viewCategories($results);
+                
+                ?>
             </select>
         </div>
         <div class="flex flex-row justify-items-end items-end">

@@ -26,10 +26,10 @@ echo $header;
                                 Book Title
                             </th>
                             <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                Student ID
+                                Student Name
                             </th>
                             <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                Student Name
+                                Student ID
                             </th>
                             <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                                 Issued On
@@ -41,26 +41,14 @@ echo $header;
                     </thead>
 
                     <tbody class="divide-y divide-gray-200">
-                        <tr>
-                            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">
+                        <?php 
+                        
+                        $issued = new getIssuedBooks();
 
-                            </td>
-                            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">
-
-                            </td>
-                            <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
-
-                            </td>
-                            <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
-
-                            </td>
-                            <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
-
-                            </td>
-                            <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
-
-                            </td>
-                        </tr>
+                        $results = $issued->getIssuedBooks($conn);
+                        $appViews->viewCurrentlyIssuedBooks($results);
+                        
+                        ?>
                     </tbody>
                 </table>
             </div>

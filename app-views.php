@@ -135,6 +135,40 @@ class appViews
 
     }
 
+    public function viewCurrentlyIssuedBooks($results)
+    {
+
+        foreach ($results as $row)
+        {
+
+            $issued_books =
+            '<tr>
+            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">
+                '.$row['id'].'
+            </td>
+            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">
+                '.$row['book_title'].'
+            </td>
+            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">
+                '.$row['first_name'] . ' ' . $row['last_name'].'
+            </td>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
+                '.$row['student_id'].'
+            </td>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
+                '.$row['issued_on'].'
+            </td>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
+                '.$row['return_date'].'
+            </td>
+        </tr>';
+
+        echo $issued_books;
+
+        }
+
+    }
+
     public function viewBooks($results)
     {
 
@@ -150,14 +184,29 @@ class appViews
                     '.$row['book_title'].'
                 </td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['author_name'].'</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['book_category'].'</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['current_issue'].'</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['category_title'].'</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['first_name']. ' ' . $row['last_name'] .'</td>
             </tr>';
 
             echo $book_row;
             
         }
         
+    }
+
+    public function viewCategories($results)
+    {
+
+        foreach ($results as $row)
+        {
+
+            $categories = 
+            '<option value="'.$row['id'].'">'.$row['category_title'].'</option>';
+            
+            echo $categories;
+
+        }
+
     }
 
 }

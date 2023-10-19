@@ -1,17 +1,17 @@
 <?php 
 
-class getBooks {
+class getIssuedBooks {
     
-    public function getBookList($pdo)
+    public function getIssuedBooks($pdo)
     {
 
         $sql = 
         "SELECT *
         FROM books
-        INNER JOIN book_categories
-        ON books.book_category = book_categories.id
+        INNER JOIN issued_books
+        ON books.id = issued_books.book_id
         INNER JOIN students
-        ON books.current_issue = students.id";
+        ON issued_books.student_id = students.id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
 
