@@ -32,7 +32,7 @@ echo $header;
                                 Category
                             </th>
                             <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                Issues
+                                Current Issue
                             </th>
                         </tr>
                     </thead>
@@ -45,8 +45,6 @@ echo $header;
 
                         $results = $students->getBookList($conn);
                         $row = $appView->viewBooks($results);
-
-                        echo $row;
 
                         ?>
                     </tbody>

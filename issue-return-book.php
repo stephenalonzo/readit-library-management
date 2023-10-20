@@ -28,7 +28,7 @@ echo $header;
                     $appView = new appViews();
 
                     $results = $books->getBookList($conn);
-
+                    
                     $appView->viewNonIssuedBooks($results);
 
                     ?>
@@ -51,7 +51,6 @@ echo $header;
                     $appView = new appViews();
 
                     $results = $books->getBookList($conn);
-                    
                     $appView->viewIssuedBooks($results);
 
                     ?>
