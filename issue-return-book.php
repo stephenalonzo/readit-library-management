@@ -28,7 +28,6 @@ echo $header;
                     $appView = new appViews();
 
                     $results = $books->getBookList($conn);
-                    
                     $appView->viewNonIssuedBooks($results);
 
                     ?>

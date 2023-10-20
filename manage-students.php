@@ -41,10 +41,7 @@ echo $header;
                         $appView = new appViews();
 
                         $results = $students->getStudentList($conn);
-
-                        $row = $appView->viewStudents($results);
-
-                        echo $row;
+                        $appView->viewStudents($results);
 
                         ?>
                     </tbody>

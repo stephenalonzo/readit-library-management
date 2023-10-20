@@ -44,7 +44,7 @@ echo $header;
                         $appView = new appViews();
 
                         $results = $students->getBookList($conn);
-                        $row = $appView->viewBooks($results);
+                        $appView->viewBooks($results);
 
                         ?>
                     </tbody>

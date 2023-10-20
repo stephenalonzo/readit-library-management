@@ -88,9 +88,9 @@ class appViews
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['email'].'</td>
             </tr>';
 
-        }
+            echo $student_row;
 
-        return $student_row;
+        }
 
     }
 
