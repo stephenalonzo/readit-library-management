@@ -86,7 +86,6 @@ class appViews
                     '.$row['last_name'].'
                 </td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['email'].'</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.count($results).'</td>
             </tr>';
 
         }
