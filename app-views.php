@@ -15,6 +15,7 @@ class appViews
             <title>Home | ReadIT Library Management System</title>
             <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
             <link rel="stylesheet" href="./dist/output.css">
+            
         </head>
         <body class="bg-gray-100">
             <section class="px-4 py-6">
