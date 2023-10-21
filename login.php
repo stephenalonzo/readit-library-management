@@ -19,7 +19,7 @@ require_once('controller.php');
     <section class="px-4 py-6">
         <div class="container mx-auto w-2/3 flex flex-row items-start space-x-8">
             <div class="bg-white w-full rounded-sm">
-                <div class="px-4 py-2 bg-gray-200">Librarian/Admin Login</div>
+                <div class="px-4 py-2 bg-gray-200 font-semibold">Librarian/Admin Login</div>
                 <div class="p-6">
                     <form action="" method="post" class="space-y-6 mb-0">
                         <div class="flex flex-row items-center space-x-4">
@@ -35,7 +35,7 @@ require_once('controller.php');
                 </div>
             </div>
             <div class="bg-white w-full rounded-sm">
-                <div class="px-4 py-2 bg-gray-200">Student Section</div>
+                <div class="px-4 py-2 bg-gray-200 font-semibold">Student Section</div>
                 <div class="p-6 flex flex-col space-y-4">
                     <a href="#" class="font-medium">Student Registration Form</a>
                     <a href="#" class="font-medium">Search Book</a>
