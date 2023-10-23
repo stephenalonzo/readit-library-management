@@ -16,6 +16,10 @@ require_once ('get_specific_book.php');
 require_once ('return_book_data.php');
 require_once ('get_categories.php');
 require_once ('get_issued_books.php');
+require_once ('search_student.php');
+require_once ('total_issues_data.php');
+require_once ('get_issues.php');
+require_once ('get_student_issues.php');
 
 require_once ('app-views.php');
 
@@ -28,8 +32,10 @@ $clean_params = new cleanParams();
 $params = $filter_params->filterParams($clean_params);
 $clean_params->setCleanParams($params);
 
-$get_specific_books = new getSpecificBook();
-$specific_books = $get_specific_books->getSpecificBook($conn, $params['book_id']);
+// $get_specific_books = new getSpecificBook();
+// $specific_books = $get_specific_books->getSpecificBook($conn, $params['book_id']);
+
+$search_student = new searchStudent();
 
 foreach ($specific_books as $specific_book)
 {
@@ -52,17 +58,26 @@ foreach ($_REQUEST as $key => $value)
 
         case 'add_book':
             $add_book = new addBook();
-            $add_book->addBook($conn, $params['book_title'], $params['author_name'], $params['book_description'], $params['book_category'], $params['current_issues']);
+            $add_book->addBook($conn, $params['book_title'], $params['author_name'], $params['book_description'], $params['genre_id'], $params['current_issues']);
         break;
 
         case 'issue_book':
-            $issue_book = new issueBook();
-            $issue_book->issueBook($conn, $book_id, $params['student_id']);
+            $issue_book = new checkIssue();
+            $issue_book->issueBook($conn, $params['book_id'], $params['student_id']);
+            $issue_book->checkIssue($conn, $params['book_id']);
+
+            $total_issues = new totalIssues();
+            $total_issues->totalIssues($conn, $params['student_id'], $params['book_id']);
         break;
 
         case 'return_book':
-            $return_book = new returnBook();
+            $return_book = new updateStatus();
             $return_book->returnBook($conn, $params['book_id']);
+            $return_book->updateStatus($conn, $params['book_id']);
+        break;
+
+        case 'search_student':
+            header("Location: index.php?find_student=".$_POST['student_id']."");
         break;
 
     }

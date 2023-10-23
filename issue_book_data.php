@@ -12,20 +12,46 @@ class issueBook
         $stmt->bindParam(':student_id', $student_id);
         $stmt->execute();
 
-        if ($stmt)
+        return $stmt;
+
+    }    
+
+}
+
+class checkIssue extends issueBook
+{
+
+    public function checkIssue($pdo, $book_id)
+    {
+
+        $sql =
+        "SELECT * FROM books WHERE book_id = :book_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':book_id', $book_id);
+        $stmt->execute();
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($results as $row)
         {
 
-            $sql = "UPDATE books SET current_issue = :current_issue WHERE id = :id";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':current_issue', $student_id);
-            $stmt->bindParam(':id', $book_id);
-            $stmt->execute();
+            if ($row['issues'] == NULL && $row['issued_status'] == NULL)
+            {
 
-            return $stmt;
+                $sql =
+                "UPDATE books SET issues = 1, issue_status = 'ISSUED'
+                WHERE book_id = :book_id";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':book_id', $book_id);
+                $stmt->execute();
+
+                return $stmt;
+
+            }
 
         }
 
-    }    
+    }
 
 }
 

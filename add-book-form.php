@@ -30,7 +30,7 @@ echo $header;
         </div>
         <div class="flex flex-row items-center">
             <label for="" class="w-1/5">Category</label>
-            <select name="book_category" id="" class="p-2 rounded-sm w-full border">
+            <select name="genre_id" id="" class="p-2 rounded-sm w-full border">
                 <?php 
 
                 $categories = new getCategories();

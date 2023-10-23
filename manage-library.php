@@ -42,9 +42,15 @@ echo $header;
 
                         $students = new getBooks();
                         $appView = new appViews();
+                        $issues = new getIssues();
 
                         $results = $students->getBookList($conn);
-                        $appView->viewBooks($results);
+
+                        $get_issues_results = $issues->getIssues($conn, $row['book_id']);
+
+                        $rows = count($get_issues_results);
+
+                        $appView->viewBooks($results, $rows);
 
                         ?>
                     </tbody>

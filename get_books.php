@@ -1,11 +1,15 @@
 <?php 
 
-class getBooks {
+class getBooks
+{
     
     public function getBookList($pdo)
     {
 
-        $sql = "SELECT * FROM book_categories INNER JOIN books ON book_categories.id = books.book_category";
+        $sql = 
+        "SELECT * FROM genres 
+        JOIN books 
+        ON genres.genre_id = books.genre_id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
 

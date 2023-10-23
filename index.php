@@ -11,15 +11,10 @@ echo $header;
 
 ?>
 
-<?php if(isset($_POST['search_student'])) { header("Location: index.php?find_student=".$_POST['student_id'].""); } ?>
-
 <script>
-
     document.getElementById("searchBook").addEventListener("click", ctaFindbook);
     document.getElementById("searchStudent").addEventListener("click", ctaFindStudent);
     document.getElementById("searchIssue").addEventListener("click", ctaFindIssue);
-    // document.getElementById("searchStudent").style.display = "none";
-    // document.getElementById("searchIssue").style.display = "none";
 
     function ctaFindBook() {
 
@@ -36,61 +31,29 @@ echo $header;
 
     function ctaFindStudent() {
 
-             document.getElementById("searchStudent").classList.remove("hidden");
-            document.getElementById("searchStudent").classList.toggle("flex");
+        document.getElementById("searchStudent").classList.remove("hidden");
+        document.getElementById("searchStudent").classList.toggle("flex");
 
-            document.getElementById("searchBook").classList.add("hidden");
-            document.getElementById("searchBook").classList.remove("flex");
+        document.getElementById("searchBook").classList.add("hidden");
+        document.getElementById("searchBook").classList.remove("flex");
 
-            document.getElementById("searchIssue").classList.add("hidden");
-            document.getElementById("searchIssue").classList.remove("flex");
+        document.getElementById("searchIssue").classList.add("hidden");
+        document.getElementById("searchIssue").classList.remove("flex");
 
     }
 
     function ctaFindIssue() {
 
-            document.getElementById("searchIssue").classList.remove("hidden");
-            document.getElementById("searchIssue").classList.add("flex");
+        document.getElementById("searchIssue").classList.remove("hidden");
+        document.getElementById("searchIssue").classList.add("flex");
 
-            document.getElementById("searchStudent").classList.add("hidden");
-            document.getElementById("searchStudent").classList.remove("flex");
+        document.getElementById("searchStudent").classList.add("hidden");
+        document.getElementById("searchStudent").classList.remove("flex");
 
-            document.getElementById("searchBook").classList.add("hidden");
-            document.getElementById("searchBook").classList.remove("flex");
+        document.getElementById("searchBook").classList.add("hidden");
+        document.getElementById("searchBook").classList.remove("flex");
 
     }
-
-    // function ctaToggle() {
-
-    //     if (document.getElementById("findBook").classList.contains("hidden")) {
-
-
-
-    //     } else if (document.getElementById("searchStudent").classList.contains("hidden")) {
-
-    //         document.getElementById("searchStudent").classList.remove("hidden");
-    //         document.getElementById("searchStudent").classList.toggle("flex");
-
-    //         document.getElementById("searchBook").classList.add("hidden");
-    //         document.getElementById("searchBook").classList.remove("flex");
-
-    //         document.getElementById("searchIssue").classList.add("hidden");
-    //         document.getElementById("searchIssue").classList.remove("flex");
-
-    //     } else if (document.getElementById("searchIssue").classList.contains("hidden")) {
-
-    //         document.getElementById("searchIssue").classList.remove("hidden");
-    //         document.getElementById("searchIssue").classList.add("flex");
-
-    //         document.getElementById("searchStudent").classList.add("hidden");
-    //         document.getElementById("searchStudent").classList.remove("flex");
-
-    //         document.getElementById("searchBook").classList.add("hidden");
-    //         document.getElementById("searchBook").classList.remove("flex");
-
-    //     }
-
-    // }
 </script>
 
 <div class="px-4 w-full h-full col-span-6 space-y-6">
@@ -138,8 +101,22 @@ echo $header;
         </form>
     </div>
 
-    <?php
+<?php
+
+    $results = $search_student->searchStudent($conn, $_GET['find_student']);
+
+    $student_issues = new getStudentIssues();
+
+    $student_issues_results = $student_issues->getStudentIssues($conn, $_GET['find_student']);
+
+    $rows = count($student_issues_results);
+
+    if ($_GET['find_student']) {
+
+        $appViews->viewStudentData($results, $rows);
+
+    }
 
     echo $footer;
 
-    ?>
+?>

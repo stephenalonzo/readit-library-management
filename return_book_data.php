@@ -11,19 +11,26 @@ class returnBook
         $stmt->bindParam(':book_id', $book_id);
         $stmt->execute();
 
-        if ($stmt)
-        {
-
-            $sql = "UPDATE books SET current_issue = NULL WHERE id = :id";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':id', $book_id);
-            $stmt->execute();
-
-            return $stmt;
-
-        }
+        return $stmt;
 
     }    
+
+}
+
+class updateStatus extends returnBook
+{
+
+    public function updateStatus($pdo, $book_id)
+    {
+
+        $sql = "UPDATE books SET issues = NULL, issue_status = NULL WHERE book_id = :book_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':book_id', $book_id);
+        $stmt->execute();
+
+        return $stmt;
+
+    }
 
 }
 

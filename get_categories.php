@@ -5,7 +5,7 @@ class getCategories {
     public function getCategories($pdo)
     {
 
-        $sql = "SELECT * FROM book_categories";
+        $sql = "SELECT * FROM genres";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
 
