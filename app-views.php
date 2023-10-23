@@ -101,11 +101,11 @@ class appViews
         foreach ($results as $row)
         {
 
-            if ($row['current_issue'] == NULL || empty($row['current_issue']))
+            if ($row['issue_status'] != 'ISSUED')
             {
 
                 $books_list = 
-                '<option value="'.$row['id'].'">'.$row['id'].'</option>';
+                '<option value="'.$row['book_id'].'">'.$row['book_id'].'</option>';
                 
                 echo $books_list;
 
@@ -122,11 +122,11 @@ class appViews
         foreach ($results as $row)
         {
 
-            if ($row['current_issue'] != NULL || !empty($row['current_issue']))
+            if ($row['issue_status'] == 'ISSUED')
             {
 
                 $books_list = 
-                '<option value="'.$row['id'].'">'.$row['id'].'</option>';
+                '<option value="'.$row['book_id'].'">'.$row['book_id'].'</option>';
                 
                 echo $books_list;
 
@@ -145,13 +145,13 @@ class appViews
             $issued_books =
             '<tr>
             <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">
-                '.$row['id'].'
+                '.$row['book_id'].'
             </td>
             <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">
-                '.$row['book_title'].'
+                '.$row['title'].'
             </td>
             <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">
-                '.$row['student_name'].'
+                '.$row['first_name'].' '.$row['last_name'].'
             </td>
             <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
                 '.$row['student_id'].'
@@ -170,7 +170,7 @@ class appViews
 
     }
 
-    public function viewBooks($results)
+    public function viewBooks($results, $rows)
     {
 
         foreach ($results as $row)
@@ -179,14 +179,14 @@ class appViews
             $book_row = 
             '<tr>
                 <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">
-                    '.$row['id'].'
+                    '.$row['book_id'].'
                 </td>
                 <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">
-                    '.$row['book_title'].'
+                    '.$row['title'].'
                 </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['author_name'].'</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['category_title'].'</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['current_issue'] .'</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['author'].'</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['genre'].'</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$rows.'</td>
             </tr>';
 
             echo $book_row;
@@ -202,12 +202,56 @@ class appViews
         {
 
             $categories = 
-            '<option value="'.$row['id'].'">'.$row['category_title'].'</option>';
+            '<option value="'.$row['id'].'">'.$row['genre'].'</option>';
             
             echo $categories;
 
         }
 
+    }
+
+    public function viewStudentData($results, $rows)
+    {
+
+        foreach ($results as $row)
+        {
+
+            $student_data =
+            '<div class="p-6 w-full h-full bg-white text-white space-y-6">
+            <div class="px-4 py-2 bg-blue-300 text-blue-600 text-sm text-center">Student Details</div>
+            <div class="flex flex-row space-x-4">
+                <ul class="text-end">
+                    <li class="text-black font-semibold">Student ID</li>
+                    <li class="text-black font-semibold">Student Name</li>
+                    <li class="text-black font-semibold">Book Issued</li>
+                    <li class="text-black font-semibold">Total Books Issued</li>
+                </ul>
+                <ul class="text-start">
+                    <li class="text-black">'.$row['student_id'].'</li>
+                    <li class="text-black">'.$row['first_name'].' '.$row['last_name'].'</li>
+                    <li class="text-black">Book Issued</li>
+                    <li class="text-black">'.$rows.'</li>
+                </ul>
+            </div>
+            <!-- <div class="px-4 py-2 bg-blue-300 text-blue-600 text-sm text-center">Issued Book Details</div>
+            <div class="flex flex-row space-x-4">
+                <ul class="text-end">
+                    <li class="text-black font-semibold">Issue ID</li>
+                    <li class="text-black font-semibold">Book Title</li>
+                    <li class="text-black font-semibold">Issued On</li>
+                </ul>
+                <ul class="text-start">
+                    <li class="text-black">Issue ID</li>
+                    <li class="text-black">Book Title</li>
+                    <li class="text-black">Issued On</li>
+                </ul>
+            </div> --!>
+        </div>';
+
+        echo $student_data;
+        
+    }
+    
     }
 
 }
