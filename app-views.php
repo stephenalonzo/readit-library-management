@@ -248,10 +248,96 @@ class appViews
             </div> --!>
         </div>';
 
-        echo $student_data;
+            echo $student_data;
         
-    }
+        }
     
+    }
+
+    public function viewBookData($results)
+    {
+
+        foreach ($results as $row)
+        {
+
+            $book_data =
+            '<div class="p-6 w-full h-full bg-white text-white space-y-6">
+            <div class="px-4 py-2 bg-blue-300 text-blue-600 text-sm text-center">Book Details</div>
+            <div class="flex flex-row space-x-4">
+                <ul class="text-end">
+                    <li class="text-black font-semibold">Book ID</li>
+                    <li class="text-black font-semibold">Book Title</li>
+                    <li class="text-black font-semibold">Author</li>
+                    <li class="text-black font-semibold">Book Genre</li>
+                </ul>
+                <ul class="text-start">
+                    <li class="text-black">'.$row['book_id'].'</li>
+                    <li class="text-black">'.$row['title'].'</li>
+                    <li class="text-black">'.$row['author'].'</li>
+                    <li class="text-black">'.$row['genre_id'].'</li>
+                </ul>
+            </div>
+            <!-- <div class="px-4 py-2 bg-blue-300 text-blue-600 text-sm text-center">Issued Book Details</div>
+            <div class="flex flex-row space-x-4">
+                <ul class="text-end">
+                    <li class="text-black font-semibold">Issue ID</li>
+                    <li class="text-black font-semibold">Book Title</li>
+                    <li class="text-black font-semibold">Issued On</li>
+                </ul>
+                <ul class="text-start">
+                    <li class="text-black">Issue ID</li>
+                    <li class="text-black">Book Title</li>
+                    <li class="text-black">Issued On</li>
+                </ul>
+            </div> --!>
+        </div>';
+
+            echo $book_data;
+        
+        }
+
+    }
+
+    public function viewIssueBookData($results)
+    {
+
+        foreach ($results as $row)
+        {
+
+            $book_data =
+            '<div class="p-6 w-full h-full bg-white text-white space-y-6">
+            <div class="px-4 py-2 bg-blue-300 text-blue-600 text-sm text-center">Book Details</div>
+            <div class="flex flex-row space-x-4">
+                <ul class="text-end">
+                    <li class="text-black font-semibold">Book ID</li>
+                    <li class="text-black font-semibold">Book Title</li>
+                    <li class="text-black font-semibold">Author</li>
+                    <li class="text-black font-semibold">Book Genre</li>
+                </ul>
+                <ul class="text-start">
+                    <li class="text-black">'.$row['book_id'].'</li>
+                    <li class="text-black">'.$row['title'].'</li>
+                    <li class="text-black">'.$row['author'].'</li>
+                    <li class="text-black">'.$row['genre_id'].'</li>
+                </ul>
+            </div>
+            <div class="px-4 py-2 bg-blue-300 text-blue-600 text-sm text-center">Student Details</div>
+            <div class="flex flex-row space-x-4">
+                <ul class="text-end">
+                    <li class="text-black font-semibold">Student ID</li>
+                    <li class="text-black font-semibold">Student Name</li>
+                </ul>
+                <ul class="text-start">
+                    <li class="text-black">'.$row['student_id'].'</li>
+                    <li class="text-black">'.$row['first_name'].' '.$row['last_name'].'</li>
+                </ul>
+            </div>
+        </div>';
+
+            echo $book_data;
+        
+        }
+
     }
 
 }
