@@ -7,8 +7,8 @@ class getIssuedBooks {
 
         $sql = 
         "SELECT * FROM books 
-        JOIN issued_books ON books.book_id = issued_books.book_id 
-        JOIN students ON issued_books.student_id = students.student_id";
+        INNER JOIN issued_books ON books.book_id = issued_books.book_id 
+        INNER JOIN students ON issued_books.student_id = students.student_id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
 

@@ -12,7 +12,6 @@ require_once ('student_registration_data.php');
 require_once ('add_book_data.php');
 require_once ('issue_book_data.php');
 require_once ('get_books.php');
-require_once ('get_specific_book.php');
 require_once ('return_book_data.php');
 require_once ('get_categories.php');
 require_once ('get_issued_books.php');
@@ -20,6 +19,8 @@ require_once ('search_student.php');
 require_once ('total_issues_data.php');
 require_once ('get_issues.php');
 require_once ('get_student_issues.php');
+require_once ('search_book_issue.php');
+require_once ('search_book.php');
 
 require_once ('app-views.php');
 
@@ -34,8 +35,6 @@ $clean_params->setCleanParams($params);
 
 // $get_specific_books = new getSpecificBook();
 // $specific_books = $get_specific_books->getSpecificBook($conn, $params['book_id']);
-
-$search_student = new searchStudent();
 
 foreach ($specific_books as $specific_book)
 {
@@ -79,6 +78,14 @@ foreach ($_REQUEST as $key => $value)
         case 'search_student':
             header("Location: index.php?find_student=".$_POST['student_id']."");
         break;
+
+        case 'search_book':
+            header("Location: index.php?find_book=".$_POST['book_id']."");
+        break;
+
+        case 'search_book_issue':
+            header("Location: index.php?find_book_issue=".$_POST['book_issue']."");
+        break; 
 
     }
 

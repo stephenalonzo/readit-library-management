@@ -87,36 +87,72 @@ echo $header;
     <div class="p-6 w-full h-full bg-white text-white space-y-6 hidden" id="searchBook">
         <form action="" method="post" class="flex flex-row items-center m-0 w-full">
             <div class="flex flex-row items-center space-x-2 w-full text-black">
-                <input type="text" name="" id="" placeholder="Enter book title or author name" class="p-2 rounded-sm w-full border">
-                <button type="submit" class="px-4 py-2 rounded-sm bg-blue-600 text-white">Search</button>
+                <input type="text" name="book_id" id="" placeholder="Enter book title or author name" class="p-2 rounded-sm w-full border">
+                <button type="submit" name="search_book" class="px-4 py-2 rounded-sm bg-blue-600 text-white">Search</button>
             </div>
         </form>
     </div>
     <div class="p-6 w-full h-full bg-white text-white space-y-6 hidden" id="searchIssue">
         <form action="" method="post" class="flex flex-row items-center m-0 w-full">
             <div class="flex flex-row items-center space-x-2 w-full text-black">
-                <input type="text" name="" id="" placeholder="Enter Student ID or Book ID" class="p-2 rounded-sm w-full border">
-                <button type="submit" class="px-4 py-2 rounded-sm bg-blue-600 text-white">Search</button>
+                <input type="text" name="book_issue" id="" placeholder="Enter Student ID or Book ID" class="p-2 rounded-sm w-full border">
+                <button type="submit" name="search_book_issue" class="px-4 py-2 rounded-sm bg-blue-600 text-white">Search</button>
             </div>
         </form>
     </div>
 
+<!-- Find Student pop-up -->
+
 <?php
 
-    $results = $search_student->searchStudent($conn, $_GET['find_student']);
+    $search_student = new searchStudent();
+    $search_student_results = $search_student->searchStudent($conn, $_GET['find_student']);
 
     $student_issues = new getStudentIssues();
-
     $student_issues_results = $student_issues->getStudentIssues($conn, $_GET['find_student']);
 
     $rows = count($student_issues_results);
 
     if ($_GET['find_student']) {
 
-        $appViews->viewStudentData($results, $rows);
+        $appViews->viewStudentData($search_student_results, $rows);
 
     }
 
-    echo $footer;
+?>
+
+<!-- Find book pop-up -->
+
+<?php 
+
+    $search_book = new searchBook();
+    $search_book_results = $search_book->searchBook($conn, $_GET['find_book']);
+
+    if ($_GET['find_book']) {
+
+        $appViews->viewBookData($search_book_results);
+
+    }
+
+?>
+
+<!-- Find book issue pop-up -->
+
+<?php 
+
+    $search_book_issue = new searchBookIssue();
+    $search_book_issue_results = $search_book_issue->searchBookIssue($conn, $_GET['find_book_issue'], $_GET['find_book_issue']);
+
+    if ($_GET['find_book_issue']) {
+
+        $appViews->viewIssueBookData($search_book_issue_results);
+
+    }
+
+?>
+
+<?php 
+
+echo $footer;
 
 ?>
