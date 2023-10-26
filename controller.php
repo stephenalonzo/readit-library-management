@@ -66,7 +66,7 @@ foreach ($_REQUEST as $key => $value)
             $issue_book->checkIssue($conn, $params['book_id']);
 
             $total_issues = new totalIssues();
-            $total_issues->totalIssues($conn, $params['student_id'], $params['book_id']);
+            $total_issues->totalIssues($conn, $params['book_id'], $params['student_id']);
         break;
 
         case 'return_book':

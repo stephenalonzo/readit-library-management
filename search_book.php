@@ -9,9 +9,9 @@ class searchBook
         $sql = 
         "SELECT * 
         FROM books 
-        WHERE book_id = :book_id";
+        WHERE title LIKE '%$find_book%'
+        OR author LIKE '%$find_book%'";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':book_id', $find_book);
         $stmt->execute();
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);

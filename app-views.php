@@ -170,7 +170,7 @@ class appViews
 
     }
 
-    public function viewBooks($results, $rows)
+    public function viewBooks($results)
     {
 
         foreach ($results as $row)
@@ -186,7 +186,6 @@ class appViews
                 </td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['author'].'</td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$row['genre'].'</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">'.$rows.'</td>
             </tr>';
 
             echo $book_row;

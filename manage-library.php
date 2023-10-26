@@ -31,9 +31,6 @@ echo $header;
                             <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                                 Category
                             </th>
-                            <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                Current Issue
-                            </th>
                         </tr>
                     </thead>
 
@@ -42,15 +39,10 @@ echo $header;
 
                         $students = new getBooks();
                         $appView = new appViews();
-                        $issues = new getIssues();
 
                         $results = $students->getBookList($conn);
 
-                        $get_issues_results = $issues->getIssues($conn, $row['book_id']);
-
-                        $rows = count($get_issues_results);
-
-                        $appView->viewBooks($results, $rows);
+                        $appView->viewBooks($results);
 
                         ?>
                     </tbody>
